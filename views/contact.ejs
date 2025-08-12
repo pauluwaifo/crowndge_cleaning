@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include('partials/head.ejs') %>
+
+	<body class="page-load">
+
+		<div id="wrapper">
+			<div class="row">
+				<!--Header Section Start-->
+				<%- include('partials/header.ejs') %>
+					<!--Header Section End-->
+					<!--Page Banner Start-->
+					<section class="full-row text-center overlay-secondary page-banner py-70">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+									<h2 class="text-primary">contact</h2>
+									<ul class="page-banner-link text-white">
+										<li><a href="/">Home /</a></li>
+										<li><a href="#">contact</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!--Page Banner End-->
+
+					<!--Get In Touch Section Start-->
+					<section class="full-row bg-white py-70">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+									<h2 class="title both-line text-center mb-40">Get in touch</h2>
+									<span class="sub-title box text-center text-black">
+										Have a question, suggestion, or just want to say hello? We’d love to hear from
+										you!
+									</span>
+								</div>
+							</div>
+							<div class="row icon-primary">
+								<div class="col-lg-3 col-md-6">
+									<div class="contact-info mb-30 text-gray text-center">
+										<div class="contact-icon margin-auto bg-secondary circle text-center"><i
+												class="fas fa-map-marker-alt"></i></div>
+										<h6 class="inner-title my-2">Contact Address</h6>
+										<p>4 Delaney Way, Salford, Manchester M7 1BL.</p>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-6">
+									<div class="contact-info mb-30 text-gray-a text-center">
+										<div class="contact-icon margin-auto bg-secondary circle text-center"><i
+												class="fas fa-mobile-alt"></i></div>
+										<h6 class="inner-title my-2">Phone Number</h6>
+										<a href="callto:+(44) 0161 280 9564">+(44) 0161 280 9564</a>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-6">
+									<div class="contact-info mb-30 text-gray-a text-center">
+										<div class="contact-icon margin-auto bg-secondary circle text-center"><i
+												class="fas fa-envelope"></i></div>
+										<h6 class="inner-title my-2">Email Address</h6>
+										<a href="mailto:info@crownedgecleaning.com">info@crownedgecleaning.com</a>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-6">
+									<div class="contact-info mb-30 text-gray-a text-center">
+										<div class="contact-icon margin-auto bg-secondary circle text-center"><i
+												class="fas fa-question"></i></div>
+										<h6 class="inner-title my-2">24/7 Online Support</h6>
+										<a href="callto:+(44) 0161 280 9564">+(44) 0161 280 9564</a> <br>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!--Get In Touch Section End-->
+
+					<!--Message Location Section Start-->
+					<section class="contact-location p-0">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="row">
+										<div class="message bg-primary">
+											<h3 class="inner-title down-line white text-white">Send Message</h3>
+											<div class="text-area text-white mb-30">
+												<p>Fill out the form below or reach us directly at CrownEdge Cleaning</p>
+											</div>
+											<form id="contact-form" class="contact-message"
+												action="https://unicoderbd.com/template/uwash/email.php" method="post">
+												<div class="row">
+													<div class="form-group col-md-6">
+														<input class="form-control" id="name" type="text" name="name"
+															placeholder="Name" />
+													</div>
+													<div class="form-group col-md-6">
+														<input class="form-control" id="email" type="text" name="email"
+															placeholder="Email" />
+													</div>
+													<div class="form-group col-md-12">
+														<input class="form-control" id="subject" type="text"
+															name="subject" placeholder="Subject" />
+													</div>
+													<div class="form-group col-md-12">
+														<textarea class="form-control" id="message" name="message"
+															placeholder="Message"></textarea>
+													</div>
+													<div class="form-group col-md-12">
+														<input class="btn btn-default my-3" id="send" type="submit"
+															value="send" />
+													</div>
+													<div class="col-md-12">
+														<div class="error-handel text-dark">
+															<div id="success">Your email sent Successfully, Thank you.
+															</div>
+															<div id="error"> Error occurred while sending email. Please
+																try again later.</div>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										<div id="map" class="map-canvas"> </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!--Message Location Section End-->
+
+
+					<!--Footer Section Start-->
+					<%- include('partials/footer.ejs') %>
+			</div>
+		</div>
+		<!--Footer Section End-->
+
+
+		<!-- All Javascript Plugin File here -->
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/jquery.themepunch.tools.min.js"></script>
+		<script src="js/jquery.themepunch.revolution.min.js"></script>
+		<script src='js/revolution.addon.slicey.min8a54.js?ver=1.0.0'></script>
+		<script src="js/revolution.addon.particles.min4bf4.js?ver=1.0.3"></script>
+		<script src="js/popper-1.14.7.min.js"></script>
+		<script src="js/bootstrap-4.3.1.min.js"></script>
+		<script src="js/YouTubePopUp.jquery.js"></script>
+		<script src="js/jquery.fancybox.pack.js"></script>
+		<script src="js/jquery.fancybox-media.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="js/owl.js"></script>
+		<script src="js/validate.js"></script>
+		<script src="js/wow.js"></script>
+		<!--tab gallery section-->
+		<script src="js/mixitup.js"></script>
+
+		<script type="text/javascript" src="js/extensions/revolution.extension.actions.min.js"></script>
+		<script type="text/javascript" src="js/extensions/revolution.extension.carousel.min.js"></script>
+		<script type="text/javascript" src="js/extensions/revolution.extension.kenburn.min.js"></script>
+		<script type="text/javascript" src="js/extensions/revolution.extension.layeranimation.min.js"></script>
+		<script type="text/javascript" src="js/extensions/revolution.extension.migration.min.js"></script>
+		<script type="text/javascript" src="js/extensions/revolution.extension.navigation.min.js"></script>
+		<script type="text/javascript" src="js/extensions/revolution.extension.parallax.min.js"></script>
+		<script type="text/javascript" src="js/extensions/revolution.extension.slideanims.min.js"></script>
+		<script type="text/javascript" src="js/extensions/revolution.extension.video.min.js"></script>
+
+		<script src="js/jquery.cookie.js"></script>
+		<script src="js/settings.js"></script>
+		<script src="js/custom.js"></script>
+
+		<!-- use for map style -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9elt0rwxavbdmLzvKE8nbHtrfxpshzmo"></script>
+		<script src="js/map.scripts.js"></script>
+	</body>
+
+	<!-- Mirrored from unicoderbd.com/template/uwash/contact.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2025 15:50:20 GMT -->
+
+</html>
