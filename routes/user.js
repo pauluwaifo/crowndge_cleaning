@@ -21,6 +21,11 @@ router.get("/book-us-now", async (_req, res) => {
 router.get("/end-of-tenancy-service", async (_req, res) => {
   res.render("end-of-tenancy-service");
 });
+router.get("/post-construction-service", async (_req, res) => {
+  res.render("post-construction-service");
+});
+
+
 router.get("/commercial-service", async (_req, res) => {
   res.render("commercial-service");
 });

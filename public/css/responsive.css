@@ -159,7 +159,7 @@
 }
 .navbar-expand-lg .navbar-nav > li.nav-item.dropdown:hover > .dropdown-menu,
 .navbar-expand-lg .dropdown-menu .dropdown:hover > .dropdown-menu {
-	top: 100%;
+	top: 70%;
 	visibility: visible;
 	opacity: 1;
 	-moz-transition: all 0.2s ease;
@@ -297,14 +297,11 @@
 	.pt-md-70,
 	.py-md-70{
 		padding-top: 70px
-	}{
-		padding-top: 70px
 	}
+	
 	.pb-md-70,
 	.py-md-70{
 		padding-top: 70px
-	}{
-		padding-bottom: 70px
 	}
 	.brochure-info a {
 	font-size: 14px;

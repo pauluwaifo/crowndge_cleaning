@@ -928,11 +928,11 @@ textarea.form-control {
 .navbar-expand-lg .navbar-nav > li > a {
 	padding: 0 !important;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 18px;
 }
 .navbar-expand-lg a.dropdown-item{
 	font-weight: 600;
-	font-size: 13px;
+	font-size: 15px;
 	font-family: 'Montserrat', sans-serif;
 }
 .navbar-expand-lg .navbar-nav > li > a.dropdown-toggle::after{
@@ -1038,13 +1038,13 @@ textarea.form-control {
 	top: 22px
 }
 .main-header .navbar-brand::after {
-    border-radius: 50%;
-    content: "";
-    height: 126px;
+    /* border-radius: 50%; */
+    /* content: ""; */
+    /* height: 126px;
     left: -33px;
     position: absolute;
     top: 2px;
-    width: 150px;
+    width: 150px; */
 }
 .main-header-2 .navbar-brand::after {
     border-radius: 50%;
