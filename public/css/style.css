@@ -922,8 +922,14 @@ textarea.form-control {
 /*====================================================================
 5.1 Main Header section css
 ====================================================================*/
+.navbar-nav {
+	display: flex;
+	justify-content: space-around;
+	flex-grow: 1 ;
+}
+
 .navbar-expand-lg .navbar-nav > li {
-	padding: 33px 15px
+	padding: 33px 15px;
 }
 .navbar-expand-lg .navbar-nav > li > a {
 	padding: 0 !important;
