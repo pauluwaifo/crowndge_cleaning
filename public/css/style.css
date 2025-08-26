@@ -1052,6 +1052,11 @@ textarea.form-control {
     top: 2px;
     width: 150px; */
 }
+.even-space {
+	display: flex;
+	flex-grow: 1;
+	justify-content: space-around;
+}
 .main-header-2 .navbar-brand::after {
     border-radius: 50%;
     content: "";
