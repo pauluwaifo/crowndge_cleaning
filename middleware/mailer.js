@@ -51,7 +51,7 @@ module.exports = async (email, fullName, subject, phone, message, state) => {
   try {
     // Send to customer
     await transporter.sendMail({
-      from: `"Life at sea" <contact@lifeatsea.com.ng>`,
+      from: `"Crownedge Cleaning service" <contact@crownedge.com>`,
       to: email,
       subject: `We've received your inquiry: ${subject || "No subject"}`,
       html: customerTemplate,
@@ -59,8 +59,8 @@ module.exports = async (email, fullName, subject, phone, message, state) => {
 
     // Send to admin
     await transporter.sendMail({
-      from: `"Life at sea" <contact@lifeatsea.com.ng>`,
-      to: process.env.ADMIN_EMAIL || "lifeatsea@gmail.com ",
+      from: `"Crownedge Cleaning service" <contact@crownedge.com>`,
+      to: process.env.ADMIN_EMAIL || "crownedge@gmail.com ",
       subject: `New inquiry: ${subject || "No subject"}`,
       html: adminTemplate,
     });
