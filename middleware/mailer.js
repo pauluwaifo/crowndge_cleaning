@@ -14,7 +14,7 @@ module.exports = async (email, fullName, subject, phone, message, state) => {
     secure: true,
     auth: {
       user: process.env.EMAIL_USER || "",
-      pass: process.env.EMAIL_PASSWORD || "Ij7R]V_;g-xG",
+      pass: process.env.EMAIL_PASSWORD || "key here",
     },
     tls: {
       rejectUnauthorized: false,
