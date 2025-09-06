@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+	<!-- Meta Tag -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="CrownEdge Cleaning">
+	<meta name="keywords"
+		content="business, cleaners, cleaning, cleaning company, house cleaning, maintenance, renovation, service, washing">
+	<meta name="Magical EssenceCleaning Service" content="Unicoder">
+	<title>CrownEdge Cleaning</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/logo/1.png">
+
+	<!-- Links of css files -->
+	<link href="css/bootstrap-4.3.1.min.css" rel="stylesheet">
+	<link href="css/fontawesome-all-5.8.1.min.css" rel="stylesheet">
+	<link href="webfonts/flaticon/flaticon.css" rel="stylesheet">
+	<link href="css/jquery-ui.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/settings.css" rel="stylesheet">
+	<link href="css/responsive.css" rel="stylesheet">
+	<link href="css/color.css" rel="stylesheet" id="color-change">
+	<link href="css/loader.css" rel="stylesheet">
+	<link href="css/range-slider.css" rel="stylesheet">
+	<link href="css/YouTubePopUp.css" rel="stylesheet">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Montserrat', sans-serif;
+			overflow-x: hidden;
+		}
+
+		.slider-container {
+			position: relative;
+			width: 100%;
+			height: 100vh;
+			min-height: 600px;
+			overflow: hidden;
+		}
+
+		.slide {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: white;
+		}
+
+		.slide.active {
+			opacity: 1;
+		}
+
+		.slide-content {
+			z-index: 10;
+			max-width: 1200px;
+			padding: 20px;
+			position: relative;
+		}
+
+		.slide-image {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			z-index: 1;
+		}
+
+		.slide-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 2;
+		}
+
+		/* Slide 1 */
+		.slide-1 .slide-overlay {
+			background: linear-gradient(90deg, rgba(134, 143, 150, 0.8) 0%, rgba(89, 97, 100, 0.8) 100%);
+		}
+
+		.slide-1 .slide-content {
+			text-align: left;
+			margin-left: 5%;
+		}
+
+		/* Slide 2 */
+		.slide-2 .slide-overlay {
+			background: linear-gradient(120deg, rgba(203, 186, 204, 0.8) 0%, rgba(36, 57, 73, 0.8) 100%);
+		}
+
+		.slide-2 .slide-content {
+			text-align: right;
+			margin-right: 5%;
+		}
+
+		/* Slide 3 */
+		.slide-3 .slide-overlay {
+			background: linear-gradient(0deg, rgba(203, 186, 204, 0.8) 0%, rgba(36, 57, 73, 0.8) 100%);
+		}
+
+		/* Slide 4 */
+		.slide-4 .slide-overlay {
+			background: linear-gradient(140deg, rgba(35, 21, 87, 0.8) 0%, rgba(68, 16, 122, 0.8) 28%, rgba(255, 19, 97, 0.8) 67%, rgba(255, 248, 0, 0.8) 100%);
+		}
+
+		.subtitle {
+			font-size: 2.5rem;
+			font-weight: 400;
+			letter-spacing: 8px;
+			margin-bottom: 20px;
+			text-transform: uppercase;
+			animation: slideInFromLeft 1s ease-out 0.5s both;
+		}
+
+		.main-title {
+			font-size: 4.5rem;
+			font-weight: 700;
+			line-height: 1.2;
+			margin-bottom: 40px;
+			letter-spacing: 2px;
+			animation: slideInFromLeft 1s ease-out 0.7s both;
+		}
+
+		.cta-button {
+			display: inline-block;
+			padding: 15px 40px;
+			border: 2px solid white;
+			color: white;
+			text-decoration: none;
+			font-size: 1.5rem;
+			letter-spacing: 2px;
+			transition: all 0.3s ease;
+			animation: slideInFromLeft 1s ease-out 0.9s both;
+		}
+
+		.cta-button:hover {
+			background-color: white;
+			color: black;
+		}
+
+		/* Navigation */
+		.slider-nav {
+			position: absolute;
+			bottom: 30px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			gap: 15px;
+			z-index: 20;
+		}
+
+		.nav-dot {
+			width: 60px;
+			height: 4px;
+			background: rgba(255, 255, 255, 0.5);
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.nav-dot.active {
+			background: rgba(255, 255, 255, 1);
+		}
+
+		.nav-arrows {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba(255, 255, 255, 0.2);
+			border: none;
+			color: white;
+			font-size: 2rem;
+			padding: 15px 20px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			z-index: 20;
+		}
+
+		.nav-arrows:hover {
+			background: rgba(255, 255, 255, 0.4);
+		}
+
+		.nav-prev {
+			left: 30px;
+		}
+
+		.nav-next {
+			right: 30px;
+		}
+
+		/* Animations */
+		@keyframes slideInFromLeft {
+			from {
+				opacity: 0;
+				transform: translateX(-100px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		@keyframes slideInFromRight {
+			from {
+				opacity: 0;
+				transform: translateX(100px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+		@keyframes slideInFromTop {
+			from {
+				opacity: 0;
+				transform: translateY(-100px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slideInFromBottom {
+			from {
+				opacity: 0;
+				transform: translateY(100px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		/* Slide 2 specific animations */
+		.slide-2 .subtitle {
+			animation: slideInFromRight 1s ease-out 0.5s both;
+		}
+
+		.slide-2 .main-title {
+			animation: slideInFromRight 1s ease-out 0.7s both;
+		}
+
+		.slide-2 .cta-button {
+			animation: slideInFromRight 1s ease-out 0.9s both;
+		}
+
+		/* Slide 3 specific animations */
+		.slide-3 .subtitle {
+			animation: slideInFromTop 1s ease-out 0.5s both;
+		}
+
+		.slide-3 .main-title {
+			animation: slideInFromTop 1s ease-out 0.7s both;
+		}
+
+		.slide-3 .cta-button {
+			animation: slideInFromTop 1s ease-out 0.9s both;
+		}
+
+		/* Slide 4 specific animations */
+		.slide-4 .subtitle {
+			animation: slideInFromBottom 1s ease-out 0.5s both;
+		}
+
+		.slide-4 .main-title {
+			animation: slideInFromBottom 1s ease-out 0.7s both;
+		}
+
+		.slide-4 .cta-button {
+			animation: slideInFromBottom 1s ease-out 0.9s both;
+		}
+
+		/* Mobile Responsive Styles */
+		@media (max-width: 768px) {
+			.slider-container {
+				min-height: 500px;
+				height: 100vh;
+			}
+
+			.slide-content {
+				padding: 15px;
+				text-align: center !important;
+				margin: 0 !important;
+			}
+
+			.subtitle {
+				font-size: 1.5rem;
+				letter-spacing: 4px;
+				margin-bottom: 15px;
+			}
+
+			.main-title {
+				font-size: 2.5rem;
+				line-height: 1.1;
+				margin-bottom: 25px;
+				letter-spacing: 1px;
+			}
+
+			.cta-button {
+				padding: 12px 25px;
+				font-size: 1.1rem;
+				letter-spacing: 1px;
+			}
+
+			.nav-arrows {
+				font-size: 1.5rem;
+				padding: 10px 15px;
+			}
+
+			.nav-prev {
+				left: 15px;
+			}
+
+			.nav-next {
+				right: 15px;
+			}
+
+			.slider-nav {
+				bottom: 20px;
+				gap: 10px;
+			}
+
+			.nav-dot {
+				width: 40px;
+				height: 3px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.slider-container {
+				min-height: 450px;
+			}
+
+			.slide-content {
+				padding: 10px;
+			}
+
+			.subtitle {
+				font-size: 1.2rem;
+				letter-spacing: 2px;
+				margin-bottom: 10px;
+			}
+
+			.main-title {
+				font-size: 2rem;
+				margin-bottom: 20px;
+			}
+
+			.cta-button {
+				padding: 10px 20px;
+				font-size: 1rem;
+			}
+
+			.nav-arrows {
+				font-size: 1.2rem;
+				padding: 8px 12px;
+			}
+
+			.nav-prev {
+				left: 10px;
+			}
+
+			.nav-next {
+				right: 10px;
+			}
+
+			.nav-dot {
+				width: 30px;
+				height: 2px;
+			}
+		}
+
+		/* Landscape mobile */
+		@media (max-width: 768px) and (orientation: landscape) {
+			.slider-container {
+				min-height: 400px;
+			}
+
+			.subtitle {
+				font-size: 1.3rem;
+				margin-bottom: 8px;
+			}
+
+			.main-title {
+				font-size: 2.2rem;
+				margin-bottom: 15px;
+			}
+		}
+	</style>
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body class="page-load">
+
+	<div id="wrapper">
+		<div class="row">
+			<!--Header Section Start-->
+
+			<header id="header" class="nav-on-top">
+				<div class="header-top bg-secondary">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<ul class="icon-list icon-primary text-white even-space">
+									<li><a href="mailto:info@crownedgecleaning.com"><i
+												class="fas fa-envelope"></i>info@crownedgecleaning.com</a>
+									</li>
+									<li><a href="callto:+(44) 0161 280 9564"><i class="fas fa-phone"></i> +(44) 0161 280
+											9564</a>
+									</li>
+									<li><a href="#"><i class="far fa-clock"></i> Monday - Saturday : 9.00 am- 6:00pm
+											(GMT)</a>
+									</li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="main-header bg-white">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<nav class="navbar navbar-expand-lg navbar-light w-100 p-0">
+									<a class="navbar-brand" href="index.html">
+										<img width="100px" class="nav-logo" src="images/logo/1.png"
+											alt="Image not found"></a>
+									<button class="navbar-toggler" type="button" data-toggle="collapse"
+										data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+										aria-expanded="false" aria-label="Toggle navigation"> <i
+											class="fas fa-bars"></i> </button>
+
+									<div class="collapse navbar-collapse" id="navbarSupportedContent">
+										<form action="#" method="post" class="search-from-menu animate-inout">
+											<input type="search" name="search" placeholder="Type your search...">
+											<span class="src-close">
+												<i class="fa fa-times" aria-hidden="true"></i>
+											</span>
+										</form>
+										<ul class="navbar-nav ">
+											<li class="nav-item dropdown">
+												<a class="nav-link dropdown-toggle" href="index.html">Home</a>
+											</li>
+											<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle"
+													href="about-us.html" role="button" data-toggle="dropdown"
+													aria-haspopup="true" aria-expanded="false">About</a>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" href="about.html">About Us</a></li>
+													<!-- <li><a class="dropdown-item" href="testimonial.html">Testimonials</a></li> -->
+													<li><a class="dropdown-item" href="values.html">Our Values</a></li>
+													<li><a class="dropdown-item" href="mission.html">Our Mission</a>
+													</li>
+													<li><a class="dropdown-item" href="vision.html">Our Vision</a></li>
+												</ul>
+											</li>
+											<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle"
+													href="service.html" role="button" data-toggle="dropdown"
+													aria-haspopup="true" aria-expanded="false">Services</a>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item"
+															href="residential-service.html">Residential
+															Cleaning</a></li>
+													<li><a class="dropdown-item"
+															href="commercial-service.html">Commercial Cleaning</a>
+													</li>
+													<li><a class="dropdown-item" href="end-of-tenancy-service.html">End
+															of Tenancy
+															Service</a></li>
+													<li><a class="dropdown-item" href="event-service.html">Event
+															Cleaning</a></li>
+													<li>
+														<a class="dropdown-item" href="post-construction-service.html">
+															Post Construction Service</a>
+													</li>
+												</ul>
+											</li>
+											<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle"
+													href="portfolio.html">Portfolio</a>
+
+											</li>
+											<li class="nav-item"> <a class="nav-link" href="quote.html">Request
+													Quote</a> </li>
+											<li class="nav-item"> <a class="nav-link" href="contact.html">Contact</a>
+											</li>
+										</ul>
+
+									</div>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- REVOLUTION LAYERS STYLES -->
+			<section class="full-row example">
+				<article class="content">
+					<div class="slider-container">
+						<!-- Slide 1 -->
+						<div class="slide slide-1 active">
+							<div class="slide-overlay"></div>
+							<img src="images/portfolio/6.jpg" alt="Clean living room" class="slide-image">
+							<div class="slide-content">
+								<div class="subtitle">Spotless Sanctuaries</div>
+								<div class="main-title">Bringing the Sparkle Back!</div>
+								<a href="/about" class="cta-button">Our Services</a>
+							</div>
+						</div>
+
+						<!-- Slide 2 -->
+						<div class="slide slide-2">
+							<div class="slide-overlay"></div>
+							<img src="images/blume.jpg" alt="Clean office space" class="slide-image">
+							<div class="slide-content">
+								<div class="subtitle">Spotless Sanctuaries</div>
+								<div class="main-title">Clean Spaces, Cleaner Planet</div>
+								<a href="/about" class="cta-button">Learn More</a>
+							</div>
+						</div>
+
+						<!-- Slide 3 -->
+						<div class="slide slide-3">
+							<div class="slide-overlay"></div>
+							<img src="images/waves.jpg" alt="Professional cleaning" class="slide-image">
+							<div class="slide-content">
+								<div class="subtitle">Pristine Results</div>
+								<div class="main-title">Trusted Hands, Pristine Results</div>
+								<a href="/about" class="cta-button">Learn More</a>
+							</div>
+						</div>
+
+						<!-- Slide 4 -->
+						<div class="slide slide-4">
+							<div class="slide-overlay"></div>
+							<img src="images/portfolio/1.jpg" alt="Before and after cleaning" class="slide-image">
+							<div class="slide-content">
+								<div class="subtitle">From Messy to Magical</div>
+								<div class="main-title">Residential & Commercial Cleaning</div>
+								<a href="/about" class="cta-button">Learn More</a>
+							</div>
+						</div>
+
+						<!-- Navigation Arrows -->
+						<button class="nav-arrows nav-prev" onclick="changeSlide(-1)">‹</button>
+						<button class="nav-arrows nav-next" onclick="changeSlide(1)">›</button>
+
+						<!-- Navigation Dots -->
+						<div class="slider-nav">
+							<div class="nav-dot active" onclick="currentSlide(1)"></div>
+							<div class="nav-dot" onclick="currentSlide(2)"></div>
+							<div class="nav-dot" onclick="currentSlide(3)"></div>
+							<div class="nav-dot" onclick="currentSlide(4)"></div>
+						</div>
+					</div>
+				</article>
+			</section>
+
+			<style type="text/css">
+				.tiny_bullet_slider .tp-bullet:before {
+					content: " ";
+					position: absolute;
+					width: 100%;
+					height: 25px;
+					top: -12px;
+					left: 0px;
+					background: transparent
+				}
+			</style>
+			<style type="text/css">
+				#rev_slider_26_1 .uranus.tparrows {
+					width: 50px;
+					height: 50px;
+					background: rgba(255, 255, 255, 0)
+				}
+
+				#rev_slider_26_1 .uranus.tparrows:before {
+					width: 50px;
+					height: 50px;
+					line-height: 50px;
+					font-size: 40px;
+					transition: all 0.3s;
+					-webkit-transition: all 0.3s
+				}
+
+				#rev_slider_26_1 .uranus.tparrows:hover:before {
+					opacity: 0.75
+				}
+
+				.bullet-bar.tp-bullets {}
+
+				.bullet-bar.tp-bullets:before {
+					content: " ";
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					background: transparent;
+					padding: 10px;
+					margin-left: -10px;
+					margin-top: -10px;
+					box-sizing: content-box
+				}
+
+				.bullet-bar .tp-bullet {
+					width: 60px;
+					height: 3px;
+					position: absolute;
+					background: #aaa;
+					background: rgba(204, 204, 204, 0.5);
+					cursor: pointer;
+					box-sizing: content-box
+				}
+
+				.bullet-bar .tp-bullet:hover,
+				.bullet-bar .tp-bullet.selected {
+					background: rgba(204, 204, 204, 1)
+				}
+
+				.bullet-bar .tp-bullet-image {}
+
+				.bullet-bar .tp-bullet-title {}
+			</style>
+			<!-- Slider Section End -->
+
+			<!--About Us Section Start-->
+			<section class="full-row bg-white py-70">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="title text-secondary both-line text-center mb-40">About Us</h2>
+							<span class="sub-title box text-center text-black">
+								CrownEdge Cleaning is Manchester’s trusted choice for top-quality, eco-friendly
+								cleaning. Established in 2024, we deliver sparkling results to homes, offices,
+								and events with integrity, reliability, and a passion for perfection.
+							</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-5">
+							<div class="about-us-left full-row">
+								<div class="big-img full-row"> <img class="circle" src="images/about/1.png" alt=" /">
+								</div>
+								<div class="small-img overlay-primary flat-white flaticon-medium">
+									<img class="circle" src="images/about/2.png" alt=" /">
+
+
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="we-are wow fadeInRight" data-wow-delay="100ms" data-wow-duration="1500ms">
+								<h5 class="inner-title text-secondary pb-3">Who We Are ?</h5>
+								<div class="mb-30">
+									<p>We are a team of experienced and passionate professionals dedicated to
+										delivering top-tier cleaning solutions that go beyond the ordinary. With
+										years of expertise and a genuine commitment to excellence, we understand
+										that a clean space isn’t just about appearance it’s about health,
+										comfort, and peace of mind. Whether it’s a cozy home, a vibrant office,
+										or a large commercial space, we approach each project with precision,
+										care, and an eye for detail that sets us apart.</p>
+									<p>At the core of our service is a strong belief in sustainability and
+										customer satisfaction. We use eco-friendly products and modern cleaning
+										methods to ensure both safety and spotless results. Our team is
+										reliable, friendly, and trained to treat every space with the respect it
+										deserves. No matter the size or scope, we deliver consistent,
+										high-quality service that you can depend on—every single time.
+									</p>
+								</div>
+								<a class="btn btn-primary" href="/about">Learn More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--About Us Section End-->
+
+			<!--Our Service Section Start-->
+			<section class="full-row bg-off-white py-70">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<h2 class="title text-secondary both-line text-center mb-40">Our Service</h2>
+							<span class="sub-title box text-center text-black">
+								We provide reliable residential and commercial cleaning solutions with a focus
+								on quality, sustainability, and attention to detail because every space deserves
+								to shine.
+							</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="full-row">
+							<div class="service-left flat-white">
+								<div class="service-item mb-40">
+									<a href="/residential-service">
+										<div class="service-icon circle bg-secondary"><span
+												class="flaticon-home margin-auto"></span></div>
+										<h5 class="inner-title text-secondary wow fadeInLeft" data-wow-delay="100ms"
+											data-wow-duration="1000ms"> Residential
+											Cleaning </h5>
+									</a>
+								</div>
+								<div style="opacity: 0;"" class=" service-item mb-40 pr-5 bg-transparent">
+									<a>
+										<div style="border: 0px solid rgba(0, 0, 0, 0);"
+											class="service-icon circle bg-transparent"><span
+												class=" margin-auto"></span></div>
+									</a>
+								</div>
+								<div class="service-item mb-40">
+									<a href="/end-of-tenancy-service">
+										<div class="service-icon circle bg-secondary"><span
+												class="flaticon-paintbrush margin-auto"></span></div>
+										<h5 class="inner-title text-secondary wow fadeInLeft" data-wow-delay="100ms"
+											data-wow-duration="1000ms">End-of-Tenancy
+											Cleaning</h5>
+									</a>
+								</div>
+							</div>
+							<div class="service-middle circle margin-auto"> <img class="circle" src="images/service.png"
+									alt="Image not found!"> </div>
+							<div class="service-right flat-white">
+								<div class="service-item float-left mb-40">
+									<a href="/commercial-service">
+										<div class="service-icon circle bg-secondary"><span
+												class="flaticon-bank-building margin-auto"></span></div>
+										<h5 class="inner-title text-secondary wow fadeInRight" data-wow-delay="100ms"
+											data-wow-duration="1000ms">Commercial
+											Cleaning</h5>
+									</a>
+								</div>
+								<div style="opacity: 0;" class="service-item float-left mb-40 pl-5">
+									<a>
+										<div class="service-icon circle bg-secondary"><span
+												class="flaticon-express-delivery margin-auto"></span></div>
+										<h5 class="inner-title text-secondary wow fadeInRight" data-wow-delay="100ms"
+											data-wow-duration="1000ms">Event Cleaning
+										</h5>
+									</a>
+								</div>
+								<div class="service-item float-left mb-40">
+									<a href="/event-service">
+										<div class="service-icon circle bg-secondary"><span
+												class="flaticon-express-delivery margin-auto"></span></div>
+										<h5 class="inner-title text-secondary wow fadeInRight" data-wow-delay="100ms"
+											data-wow-duration="1000ms">Event Cleaning
+										</h5>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--Our Service Section End-->
+
+			<!--Why Choose Us Section Start-->
+			<section id="why-choose-us" class="bg-white py-70 full-row">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="title text-secondary both-line text-center mb-40">Why choose us</h2>
+							<span class="sub-title box text-center text-black">
+								We’re more than just cleaners—we’re committed partners in creating healthier,
+								fresher spaces. Our team is trained, reliable, and detail-focused, ensuring
+								consistent quality you can count on. With eco-friendly products, flexible
+								scheduling, and a customer-first mindset, we make cleanliness effortless and
+								satisfaction guaranteed.
+							</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-7">
+							<div class="choose-us-left flat-white">
+								<div class="choose-resons pb-30">
+									<span class="bg-primary circle text-center mr-20"><i
+											class="flaticon-medal"></i></span>
+									<div class="choose-text">
+										<h6 class="inner-title">Unmatched Excellence</h6>
+										<p>We deliver premium-quality cleaning with precision and care.</p>
+									</div>
+								</div>
+								<div class="choose-resons pb-30">
+									<span class="bg-primary circle text-center mr-20"><i
+											class="flaticon-tyre-expert"></i></span>
+									<div class="choose-text">
+										<h6 class="inner-title">Eco-Conscious Cleaning</h6>
+										<p>We use environmentally safe products that protect your space and the
+											planet.</p>
+									</div>
+								</div>
+								<div class="choose-resons pb-30">
+									<span class="bg-primary circle text-center mr-20"><i
+											class="flaticon-wrench"></i></span>
+									<div class="choose-text">
+										<h6 class="inner-title">Client-First Approach</h6>
+										<p>Your needs drive our services—we listen, adapt, and deliver
+											satisfaction.</p>
+									</div>
+								</div>
+								<div class="choose-resons pb-30">
+									<span class="bg-primary circle text-center mr-20"><i
+											class="flaticon-cute-rocket-launching"></i></span>
+									<div class="choose-text">
+										<h6 class="inner-title">Quick Response and 24/7 Support</h6>
+										<p>Always punctual, professional, and committed to your schedule.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-5 overflow-hidden-mobile">
+							<div style="width: 370px; height: 370px; overflow: hidden; display: flex; align-items: center; justify-items: center; border-radius: 50px;"
+								class="choose-us-right "> <img src="images/cleaning-lady.png" alt="Image not found!">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--Why Choose Us Section End-->
+
+			<!--Achivment Section Start-->
+			<section class="full-row background-1 overlay-secondary py-70">
+				<div class="container">
+					<div class="fact-counter">
+						<div class="row">
+							<div class="col-12">
+								<div class="achievement flat-primary text-center wow fadeIn mb-5 mb-lg-0"
+									data-wow-duration="300ms">
+									<h2 class="text-white">CrownEdge Cleaning, Since 2024</h2>
+								</div>
+							</div>
+							<!-- <div class="col-lg-3 col-sm-6">
+                    <div class="achievement flat-primary text-center wow fadeIn mb-5 mb-lg-0" data-wow-duration="300ms">
+						<span class="flaticon-handshake"></span>
+                        <h2 class="counting text-white my-3" data-speed="3000" data-stop="1500">0</h2>
+                        <h6 class="sunject text-white">Satisfied Clients</h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="achievement flat-primary text-center wow fadeIn mb-5 mb-lg-0" data-wow-duration="300ms">
+						<span class="flaticon-cup"></span>
+                        <h2 class="counting text-white my-3" data-speed="3000" data-stop="120">0</h2>
+                        <h6 class="sunject text-white">Awards win</h6>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="achievement flat-primary text-center wow fadeIn mb-5 mb-lg-0" data-wow-duration="300ms">
+						<span class="flaticon-calendar"></span>
+                        <h2 class="counting text-white my-3" data-speed="3000" data-stop="20">0</h2>
+                        <h6 class="sunject text-white">Years Experience</h6>
+                    </div>
+                </div> -->
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--Achivment Section End-->
+
+			<!--Our Project Section Start-->
+			<section class="full-row bg-white py-70">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="title text-secondary both-line text-center mb-40">Our Projects</h2>
+						</div>
+						<div class="col-md-12">
+							<div class="gallery-section">
+								<div class="auto-container">
+									<!--Filter-->
+									<div class="filters">
+										<ul class="filter-tabs filter-btns clearfix anim-3-all">
+											<li class="active filter" data-role="button" data-filter="all">All
+												Project</li>
+											<li class="filter" data-role="button" data-filter=".appartment-pot">
+												Appartment</li>
+											<li class="filter" data-role="button" data-filter=".car-wash-pot">
+												Car Wash</li>
+											<li class="filter" data-role="button" data-filter=".office-pot">
+												Office</li>
+											<li class="filter" data-role="button" data-filter=".renovation-pot">
+												Renovation</li>
+											<li class="filter" data-role="button" data-filter=".in-out-pot">Move
+												In/Out</li>
+											<li class="filter" data-role="button" data-filter=".green-cleaning-pot">
+												Green Cleaning</li>
+										</ul>
+									</div>
+									<!--Filter List-->
+
+									<!-- Tab Content -->
+									<div class="row filter-list clearfix">
+										<div
+											class="column mix mix-all green-cleaning-pot office-pot appartment-pot col-lg-4 col-sm-6">
+											<!--Default Portfolio Item-->
+											<div class="default-portfolio-item">
+												<div class="inner-box text-center">
+													<!--Image Box-->
+													<figure class="image-box"><img src="images/portfolio/1.jpg"
+															alt="Image not found!"></figure>
+													<div class="overlay-box bg-primary">
+														<div class="inner-content"> <a class="arrow lightbox-image"
+																href=""><img
+																	src="images/icon/right-arrow.png"
+																	alt="Image not found!" class="flaticon-cross-4" />
+															</a>
+															<div class="content-bottom text-left">
+																<h6 class="text-dark">Crown Edge</h6>
+																<a href="">
+																	<h5 class="inner-title text-white">Cleaning
+																		service</h5>
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+									<!-- End tab content -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+			<!--Our Project Section End-->
+
+			<!--Quote & Testmonial Section Start-->
+			<section class="full-row">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-8 bg-dark overflow-hidden">
+							<div class="row">
+								<div class="quote">
+									<div class="row">
+										<div class="col-lg-8">
+											<h3 class="inner-title text-primary down-line mb-30">Get A Quote
+											</h3>
+											<div class="text-area text-white">
+												<p>Tell us a bit about your space and cleaning needs, and we'll
+													send you a personalized quote quick and hassle free!</p>
+											</div>
+											<form class="transparent-form py-3" method="post" action="#">
+												<div class="row">
+													<div class="form-group col-md-6 col-sm-6">
+														<input type="text" class="form-control" name="name"
+															placeholder="Your Name" />
+													</div>
+													<div class="form-group col-md-6 col-sm-6">
+														<input type="text" class="form-control" name="email"
+															placeholder="Email Address" />
+													</div>
+													<div class="form-group col-md-6 col-sm-6">
+														<input type="text" class="form-control" name="phone"
+															placeholder="Phone Number" />
+													</div>
+													<div class="form-group col-md-6 col-sm-6">
+														<input type="text" class="form-control" name="address"
+															placeholder="Location / Address" />
+													</div>
+													<div class="form-group col-md-12">
+														<select class="form-control">
+															<option>Select Your Service Type</option>
+															<option value="apartment">Apartment Cleaning
+															</option>
+															<option value="commercial-service">Commercial
+																Cleaning</option>
+															<option value="end-of-tenancy-service">End Of
+																Tenancy Cleaning</option>
+															<option value="event-cleaning-service">Event
+																Cleaning</option>
+															<option value="residential-cleaning">Residential
+																Cleaning</option>
+														</select>
+													</div>
+													<div class="form-group col-md-12">
+														<textarea class="form-control" column="8" name="message"
+															placeholder="Message"></textarea>
+													</div>
+													<div class="form-group col-md-12">
+														<input class="btn btn-primary mt-3" type="submit"
+															value="send" />
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+									<div class="quote-image wow slideInUp" data-wow-delay="300ms"
+										data-wow-duration="1000ms">
+										<!-- put som in here -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 bg-off-white">
+							<div class="row">
+								<!-- <div class="testimonials">
+                        <h3 class="inner-title text-secondary down-line">Testimonial</h3>
+                        <div class="testimonials-carousel owl-carousel">
+                            <div class="item">
+                                <div class="testimonial-author"> <img class="circle" src="images/author.png" alt="Image not found!"> </div>
+                                <div class="testimonial-detail bg-white p-3 full-row">
+                                    <div class="text-area"><p>Nulla. Accumsan non phasellus vulputate. Turpis sollicitudin nibh cubilia, habitasse in urna dolor commodo scelerisque montes vitae. Mi eros non mauris placerat lorem ullamcorper magnis Eleifend libero mus habitasse habitasse purus suscipit faucibus suscipit ligula lorem taciti lobortis dignissim fames.</p></div>
+                                    <h6 class="author-name text-capitalize">Steven Lucas</h6>
+                                    <div class="author-designation">CEO Unicoder Group</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-author"> <img class="circle" src="images/author.png" alt="Image not found!"> </div>
+                                <div class="testimonial-detail bg-white p-3 full-row">
+                                    <div class="text-area"><p>Nulla. Accumsan non phasellus vulputate. Turpis sollicitudin nibh cubilia, habitasse in urna dolor commodo scelerisque montes vitae. Mi eros non mauris placerat lorem ullamcorper magnis Eleifend libero mus habitasse habitasse purus suscipit faucibus suscipit ligula lorem taciti lobortis dignissim fames.</p></div>
+                                    <h6 class="author-name text-capitalize">Steven Lucas</h6>
+                                    <div class="author-designation">CEO Unicoder Group</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimonial-author"> <img class="circle" src="images/author.png" alt="Image not found!"> </div>
+                                <div class="testimonial-detail bg-white p-3 full-row">
+                                    <div class="text-area"><p>Nulla. Accumsan non phasellus vulputate. Turpis sollicitudin nibh cubilia, habitasse in urna dolor commodo scelerisque montes vitae. Mi eros non mauris placerat lorem ullamcorper magnis Eleifend libero mus habitasse habitasse purus suscipit faucibus suscipit ligula lorem taciti lobortis dignissim fames.</p></div>
+                                    <h6 class="author-name text-capitalize">Steven Lucas</h6>
+                                    <div class="author-designation">CEO Unicoder Group</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--Quote & Testmonial Section End-->
+
+			<!--Process Section Start-->
+			<div class="full-row text-black">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="row h-100">
+								<div class="offer process-item">
+									<h4 class="inner-title down-line black text-black">Get An Offer</h4>
+									<div class="text-area">
+										<p>Take the first step toward a cleaner, healthier space! Request your
+											free quote today and enjoy exclusive deals tailored to your needs.
+											Whether it’s a one-time service or a recurring plan, we’ve got an
+											offer just for you.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="row h-100">
+								<div class="objection process-item bg-primary">
+									<h4 class="inner-title down-line black text-black">Give your objection</h4>
+									<div class="text-area">
+										<p>We understand that letting someone into your space is a big decision.
+											That’s why we’re transparent, professional, and fully committed to
+											your peace of mind. No hidden fees, no rushed jobs—just honest
+											service and spotless results. Still unsure? Reach out. We’re happy
+											to answer any questions.
+
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 float-right">
+							<div class="row h-100">
+								<div class="save-money process-item">
+									<h4 class="inner-title down-line black text-black">Save your money</h4>
+									<div class="text-area">
+										<p>Quality cleaning doesn’t have to break the bank. We offer affordable,
+											value-packed services that give you spotless results without the
+											high price tag. Enjoy a cleaner space while keeping your budget
+											intact.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Process Section End-->
+
+
+			<!--Footer Section Start-->
+			<footer class="full-row">
+				<div class="py-70 text-gray">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-3 col-md-6">
+								<div class="footer-widget">
+									<a href="index.html">
+										<img class="logo-bottom" src="images/logo/2.png" alt="Image not found!"></a>
+									<div class="widget widget-text">
+										<div class="widget-content">
+											<p>Welcome to CrownEdge Cleaning—Manchester’s premier choice for spotless
+												spaces and professional care. Established in 2024, our journey began
+												with a clear mission: to deliver exceptional cleaning services that not
+												only meet but consistently exceed expectations.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-6">
+								<div class="footer-widget">
+									<div class="widget quick-link">
+										<h4 class="widget-title text-white">Quick Links</h4>
+										<div class="widget-content">
+											<ul class="text-gray-a">
+												<li><a href="index.html">Home</a>
+												</li>
+												<li><a href="about.html">About Us</a>
+												</li>
+												<li><a href="portfolio.html">Portfolio</a>
+												</li>
+												<li><a href="contact.html">Contact</a>
+												</li>
+
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-6">
+								<div class="footer-widget">
+									<div class="widget quick-link">
+										<h4 class="widget-title text-white">About Us</h4>
+										<div class="widget-content">
+											<ul class="text-gray-a">
+												<li><a href="values.html">Our Values</a>
+												</li>
+												<li><a href="mission.html">Our Mission </a>
+												</li>
+												<li><a href="vision.html">Our Vision</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-6">
+								<div class="footer-widget">
+									<div class="widget quick-link">
+										<h4 class="widget-title text-white">Services</h4>
+										<div class="widget-content">
+											<ul class="text-gray-a">
+												<li><a href="residential-service.html">Residential Cleaning</a>
+												</li>
+												<li><a href="commercial-service.html">Commercial Cleaning </a>
+												</li>
+												<li><a href="event-service.html">Event Cleaning</a>
+												</li>
+												<li><a href="end-of-tenancy-service.html">End of Tenancy Cleaning</a>
+												</li>
+												<li><a href="post-construction-service.html">Post Construction
+														Cleaning</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="footer-widget">
+									<div class="widget get-in-touch">
+										<h4 class="widget-title text-white">Get In Touch</h4>
+										<div class="widget-content">
+											<ul class="icon-primary text-gray-a">
+												<li>
+													<h6 class="inner-title text-white"><i
+															class="fas fa-map-marker-alt mr-2"></i>Office Address</h6>
+													<p>4 Delaney Way, Salford, Manchester M7 1BL.</p>
+												</li>
+												<li>
+													<h6 class="inner-title text-white"><i
+															class="fas fa-phone mr-2"></i>Call us 24/7</h6>
+													<a href="callto:+(44) 0161 280 9564"> +(44) 0161 280 9564</a><br>
+													<a href="callto:+(44) 0161 280 9564"> +(44) 0161 280 9564</a>
+												</li>
+												<li>
+													<h6 class="inner-title text-white"><i
+															class="fas fa-envelope mr-2"></i> Email Adress</h6>
+													<p><a href="mailto:info@domain.com">info@crownedgecleaning.com</a>
+													</p>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="text-center text-gray bg-dark py-3"> Copyright 20125 © all rights by CodeFromMe </div>
+			</footer>
+		</div>
+	</div>
+	<!--Footer Section End-->
+
+
+	<!-- All Javascript Plugin File here -->
+	<script>
+		let slideIndex = 1;
+		const slides = document.querySelectorAll('.slide');
+		const dots = document.querySelectorAll('.nav-dot');
+		let slideInterval;
+
+		function showSlide(n) {
+			if (n > slides.length) { slideIndex = 1; }
+			if (n < 1) { slideIndex = slides.length; }
+
+			slides.forEach(slide => slide.classList.remove('active'));
+			dots.forEach(dot => dot.classList.remove('active'));
+
+			slides[slideIndex - 1].classList.add('active');
+			dots[slideIndex - 1].classList.add('active');
+		}
+
+		function changeSlide(n) {
+			slideIndex += n;
+			showSlide(slideIndex);
+			resetInterval();
+		}
+
+		function currentSlide(n) {
+			slideIndex = n;
+			showSlide(slideIndex);
+			resetInterval();
+		}
+
+		function nextSlide() {
+			slideIndex++;
+			showSlide(slideIndex);
+		}
+
+		function resetInterval() {
+			clearInterval(slideInterval);
+			slideInterval = setInterval(nextSlide, 5000);
+		}
+
+		// Auto-play slider
+		slideInterval = setInterval(nextSlide, 5000);
+
+		// Pause on hover
+		const sliderContainer = document.querySelector('.slider-container');
+		sliderContainer.addEventListener('mouseenter', () => {
+			clearInterval(slideInterval);
+		});
+
+		sliderContainer.addEventListener('mouseleave', () => {
+			slideInterval = setInterval(nextSlide, 5000);
+		});
+
+		// Touch/swipe support for mobile
+		let startX = 0;
+		let endX = 0;
+
+		sliderContainer.addEventListener('touchstart', (e) => {
+			startX = e.touches[0].clientX;
+		});
+
+		sliderContainer.addEventListener('touchend', (e) => {
+			endX = e.changedTouches[0].clientX;
+			handleSwipe();
+		});
+
+		function handleSwipe() {
+			const swipeThreshold = 50;
+			const diff = startX - endX;
+
+			if (Math.abs(diff) > swipeThreshold) {
+				if (diff > 0) {
+					// Swipe left - next slide
+					changeSlide(1);
+				} else {
+					// Swipe right - previous slide
+					changeSlide(-1);
+				}
+			}
+		}
+
+		// Keyboard navigation
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') {
+				changeSlide(-1);
+			} else if (e.key === 'ArrowRight') {
+				changeSlide(1);
+			}
+		});
+	</script>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/jquery.themepunch.tools.min.js"></script>
+	<script src="js/jquery.themepunch.revolution.min.js"></script>
+	<script src='js/revolution.addon.slicey.min8a54.js?ver=1.0.0'></script>
+	<script src="js/revolution.addon.particles.min4bf4.js?ver=1.0.3"></script>
+	<script src="js/popper-1.14.7.min.js"></script>
+	<script src="js/bootstrap-4.3.1.min.js"></script>
+	<script src="js/YouTubePopUp.jquery.js"></script>
+	<script src="js/jquery.fancybox.pack.js"></script>
+	<script src="js/jquery.fancybox-media.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/owl.js"></script>
+	<script src="js/validate.js"></script>
+	<script src="js/wow.js"></script>
+	<!--tab gallery section-->
+	<script src="js/mixitup.js"></script>
+
+	<script type="text/javascript" src="js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript" src="js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript" src="js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript" src="js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript" src="js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript" src="js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript" src="js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript" src="js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript" src="js/extensions/revolution.extension.video.min.js"></script>
+
+	<script src="js/jquery.cookie.js"></script>
+	<script src="js/settings.js"></script>
+	<script src="js/custom.js"></script>
+
+	<!-- use for map style -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9elt0rwxavbdmLzvKE8nbHtrfxpshzmo"></script>
+	<script src="js/map.scripts.js"></script>
+</body>
+
+<!-- Mirrored from unicoderbd.com/template/uwash/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Aug 2025 15:48:48 GMT -->
+
+</html>
